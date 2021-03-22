@@ -157,10 +157,9 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
 
                         }
                     }
-                }else
-                {
+                } else {
                     val question = myQuestionsList?.get(myCurrentPos - 1)
-                    if(question!!.correctAnswers != myCurrentPos)
+                    if(question!!.correctAnswers != mySelectedPos)
                     {
                         answerView(mySelectedPos,R.drawable.incorrect_option_border_bg)
                     }
