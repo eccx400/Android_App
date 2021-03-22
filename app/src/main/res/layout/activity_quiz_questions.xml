@@ -14,16 +14,16 @@
         android:layout_gravity="center">
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/mainQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#363A43"
             android:textSize="22sp"
-            android:text="What country does this flag belong to?"/>
+            android:text="What does this character sound like?"/>
 
         <ImageView
-            android:id="@+id/iv_image"
+            android:id="@+id/mainImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -50,7 +50,7 @@
                 android:indeterminate="false"/>
 
             <TextView
-                android:id="@+id/tv_progress"
+                android:id="@+id/qProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,7 +61,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_option_one"
+            android:id="@+id/option_One"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -73,7 +73,7 @@
             tools:text="Apple" />
 
         <TextView
-            android:id="@+id/tv_option_two"
+            android:id="@+id/option_Two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -88,7 +88,7 @@
             tools:text="Google" />
 
         <TextView
-            android:id="@+id/tv_option_three"
+            android:id="@+id/option_Three"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -103,7 +103,7 @@
             tools:text="Android Inc." />
 
         <TextView
-            android:id="@+id/tv_option_four"
+            android:id="@+id/option_Four"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -118,7 +118,7 @@
             tools:text="Nokia" />
 
         <Button
-            android:id="@+id/btn_submit"
+            android:id="@+id/submitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
