@@ -1,5 +1,6 @@
 package com.example.duolingo
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -16,10 +17,16 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
     private var myCurrentPos:Int = 1
     private var myQuestionsList: ArrayList<Question> ?= null
     private var mySelectedPos:Int = 0
+    private var myCorrectAns: Int = 0
+    private var myUsername: String ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        myUsername = intent.getStringExtra(Constants.USER_NAME )
 
         myQuestionsList = Constants.getQuestions()
 
@@ -32,11 +39,26 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
         submitButton.setOnClickListener(this)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
+
     private fun setQuestion(){
         myCurrentPos = 1
         val question = myQuestionsList!![myCurrentPos - 1]
 
         defaultOptionsView()
+
+        if(myCurrentPos == myQuestionsList!!.size)
+        {
+            submitButton.text="FINISH"
+
+        }
+        else
+        {
+            submitButton.text="SUBMIT"
+        }
 
         progressBar.progress = myCurrentPos
         qProgress.text = "$myCurrentPos" + "/" + progressBar.max
@@ -79,7 +101,28 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun answerView(answer: Int, drawView: Int){
-        when(answer)
+        when(answer){
+            1->{
+                option_One.background = ContextCompat.getDrawable(
+                    this, drawView
+                )
+            }
+            2 ->{
+                option_Two.background=ContextCompat.getDrawable(
+                    this, drawView
+                )
+            }
+            3 ->{
+                option_Three.background=ContextCompat.getDrawable(
+                    this, drawView
+                )
+            }
+            4 ->{
+                option_Four.background=ContextCompat.getDrawable(
+                    this, drawView
+                )
+            }
+        }
     }
 
     override fun onClick(v: View?){
@@ -97,7 +140,7 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
                 selectedOptionView(option_Four,4)
             }
             R.id.submitButton ->{
-                if(mySelectedPos==0)
+                if(mySelectedPos == 0)
                 {
                     myCurrentPos++
 
@@ -106,9 +149,9 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         }
                         else ->{
-                            val intent= Intent(this,ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, username)
-                            intent.putExtra(Constants.CORRECT_ANSWERS,mCorrectAnswers)
+                            val intent= Intent(this,resultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, myUsername)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, myCorrectAns)
                             intent.putExtra(Constants.TOTAL_QUESTIONS, myQuestionsList!!.size)
                             startActivity(intent)
                             finish()
@@ -124,7 +167,7 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
                     }
                     else
                     {
-                        mCorrectAnswers++
+                        myCorrectAns++
                     }
                     answerView(question.correctAnswers,R.drawable.correct_option_border_bg)
 
