@@ -45,7 +45,6 @@ class quizQuestions : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion(){
-        myCurrentPos = 1
         val question = myQuestionsList!![myCurrentPos - 1]
 
         defaultOptionsView()
