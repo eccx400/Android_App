@@ -1,3 +1,3 @@
 # Duolingo_App
 
-## Update Later
+## Table of Contents
